@@ -4,6 +4,8 @@ body{
     font-size:45px;
     font-weight:bold;
     text-transform:uppercase;
+    background-color:white;
+    color:black;
     background-position:center center;
     background-repeat:no-repeat;
 }
@@ -28,6 +30,7 @@ body{
 }
 
 #container h1 img{
+    display:none;
     width:80px;
     margin-left:10px;
     margin-right:10px;
