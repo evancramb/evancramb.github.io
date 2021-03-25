@@ -1,7 +1,7 @@
 body{
     text-align:center;
     font-family:'Century Gothic','Verdana',sans-serif;
-    font-size:2em;
+    font-size:60px;
     font-weight:bold;
     text-transform:uppercase;
     background-position:center center;
@@ -14,7 +14,6 @@ body{
     margin-right:auto;
     border:5px solid blue;
     padding:2%;
-    background-image:url('logo.gif');
     background-position:center center;
     background-repeat:no-repeat;
     
@@ -22,6 +21,7 @@ body{
 
 #container h1{
     text-decoration:underline;
+    font-size:60px;
     font-style:italic;
     margin:0px;
     margin-bottom:40px;
@@ -35,6 +35,5 @@ body{
 
 #container table{
     width:100%;
-    font-size:2em;
     text-align:left;
 }
