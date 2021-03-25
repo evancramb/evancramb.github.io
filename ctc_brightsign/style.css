@@ -30,8 +30,7 @@ body{
 }
 
 #container h1 img{
-    display:none;
-    width:80px;
+    width:50px;
     margin-left:10px;
     margin-right:10px;
 }
@@ -39,4 +38,8 @@ body{
 #container table{
     width:100%;
     text-align:left;
+}
+
+.ar{
+    text-align:right;
 }
