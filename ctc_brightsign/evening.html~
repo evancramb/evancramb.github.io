@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CTC Classrooms</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+<body>
+
+<div id="container">
+<h1>Classes - Wednesday March 25, 2021</h1>
+<table>
+  <tr><td>Class 1</td><td>Room 1</td></tr>
+  <tr><td>Class 2</td><td>Room 2</td></tr>
+  <tr><td>Class 3</td><td>Room 3</td></tr>
+  <tr><td>Class 4</td><td>Room 4</td></tr>
+  <tr><td>Class 5</td><td>Room 5</td></tr>
+  <tr><td>Class 6</td><td>Room 6</td></tr>
+  <tr><td>Class 7</td><td>Room 7</td></tr>
+</table>
+</div><!-- end container -->
+
+</body>
+</html>
