@@ -2,6 +2,8 @@
 <html>
   <head>
     <title>CTC Classrooms</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="style.css">
     <script type="text/javascript">
       setInterval(function() {
@@ -12,15 +14,30 @@
 <body>
 
 <div id="container">
-<h1><img src="logo.gif">Wednesday March 25, 2021<img src="logo.gif"></h1>
+<h1><img src="logo.gif">Saturday April 10, 2021<img src="logo.gif"></h1>
 <table>
-  <tr><td>CPR</td><td>Room 221</td></tr>
-  <tr><td>Aerial Lift (MEWP)</td><td>Room ___</td></tr>
-  <tr><td>OSHA 30</td><td>Online</td></tr>
-  <tr><td>Rigging</td><td>Room ___</td></tr>
-  <tr><td>32HR Scaffold</td><td>Room ___</td></tr>
+  <tr><td>OSHA 30</td><td class="ar">Room 221</td></tr>
+  <tr><td>8HR Haz. Waste</td><td class="ar">Room 245</td></tr>
+  <tr><td>MEWP (Aerial Lift)</td><td class="ar">Room 227</td></tr>
+  <tr><td>MEWP (Cont.) </td><td class="ar">Room 228</td></tr>
+  <tr><td>8HR SST Bundle</td><td class="ar">Room 236</td></tr>
+  <tr><td>32HR Scaffold</td><td class="ar">Room 252</td></tr>
+  <tr><td>8HR Scaffold (VR)</td><td class="ar">Room 222</td></tr>
+  <tr><td>8HR Scaffold (RM)</td><td class="ar">Room 253</td></tr>
 </table>
 </div><!-- end container -->
 
 </body>
+    <script type="text/javascript">
+
+var elements = document.getElementsByTagName('TD');
+var i = 0;
+while (i<elements.length){
+elements[i].innerHTML = elements[i].textContent.replace(/(\$?\d+)/g, '<span>$1</span>');
+i+=1;
+}
+
+
+    </script>
 </html>
+

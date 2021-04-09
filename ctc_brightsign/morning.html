@@ -2,6 +2,8 @@
 <html>
   <head>
     <title>CTC Classrooms</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="style.css">
     <script type="text/javascript">
       setInterval(function() {
@@ -12,15 +14,53 @@
 <body>
 
 <div id="container">
-<h1><img src="logo.gif">Wednesday March 25, 2021<img src="logo.gif"></h1>
-<table>
-  <tr><td>CPR</td><td>Room 221</td></tr>
-  <tr><td>Aerial Lift (MEWP)</td><td>Room ___</td></tr>
-  <tr><td>OSHA 30</td><td>Online</td></tr>
-  <tr><td>Rigging</td><td>Room ___</td></tr>
-  <tr><td>32HR Scaffold</td><td>Room ___</td></tr>
+<span id="console"></span>
+<h1><img src="logo.gif">Apprentice Classes<img src="logo.gif"></h1>
+<table id="slide1">
+  <tr><td>Fall Protection</td><td class="ar">Room 227</td></tr>
+  <tr><td>40HR Scaffold </td><td class="ar">Room 252</td></tr>
+  <tr><td>Advanced Ceilings</td><td class="ar">Basement 008</td></tr>
+  <tr><td>Basic Blueprint</td><td class="ar">Room 222</td></tr>
+  <tr><td>Basic Drywall</td><td class="ar">Basement 009</td></tr>
+  <tr><td>Doors & Hardware</td><td class="ar">Room 239</td></tr>
+  <tr><td>House Framing 2</td><td class="ar">Basement 022</td></tr>
+  <tr><td>Intro. NYC Concrete</td><td class="ar">Room 245</td></tr>
+
+</table>
+<table id="slide2">
+  <tr><td>DT: Blueprint  1</td><td class="ar">Basement 016</td></tr>
+  <tr><td>Floor Covering Wk 11</td><td class="ar">Room 233</td></tr>
+  <tr><td>HR: Columns, Beams...</td><td class="ar">Basement 011</td></tr>
+  <tr><td>Intro to Carpentry</td><td class="ar">Room 240</td></tr>
+  <tr><td>BuildingWorks/OSHA 30</td><td class="ar">Room 245</td></tr>
+  <tr><td>New Apprentices</td><td class="ar">Room 253</td></tr>
+  <tr><td>Concrete Infra.</td><td class="ar">Room 227</td></tr>
 </table>
 </div><!-- end container -->
 
 </body>
+    <script type="text/javascript">
+
+var elements = document.getElementsByTagName('TD');
+var i = 0;
+while (i<elements.length){
+elements[i].innerHTML = elements[i].textContent.replace(/(\$?\d+)/g, '<span>$1</span>');
+i+=1;
+}
+
+
+    </script>
+<script type="text/javascript">
+
+var slide = 2;
+document.getElementById("slide2").setAttribute("style","display:none;");
+document.getElementById("slide1").setAttribute("style","");
+setInterval(function() {
+                  if(slide == 1){document.getElementById("slide2").setAttribute("style","display:none;");document.getElementById("slide1").setAttribute("style","");slide=2;}
+                  else if(slide == 2){document.getElementById("slide1").setAttribute("style","display:none;");document.getElementById("slide2").setAttribute("style","");slide=1;}
+      }, 10000);
+
+
+</script>
 </html>
+
