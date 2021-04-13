@@ -47,6 +47,10 @@ body{
     text-align:right;
 }
 
+h1 span{
+color:black;
+}
+
 span{
 color:red;
 }

@@ -14,7 +14,7 @@
 <body>
 
 <div id="container">
-<h1><img src="logo.gif">Thursday April 8, 2021<img src="logo.gif"></h1>
+<h1><img src="logo.gif"><span id="date">Evening Classes</span><img src="logo.gif"></h1>
 <table>
   <tr><td>First Aid</td><td class="ar">Room 227</td></tr>
   <tr><td>OSHA 30</td><td class="ar">Room 221</td></tr>
@@ -35,5 +35,13 @@ i+=1;
 
 
     </script>
+<script type="text/javascript"><!--
+var now = new Date();
+var Weekday = new Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday");
+var Month = new Array("January","February","March","April","May","June","July","August","September","October","November","December");
+document.getElementById('date').innerHTML = Weekday[now.getDay()]+',&nbsp'+Month[now.getMonth()]+'&nbsp'+now.getDate()+',&nbsp'+now.getFullYear();
+//--></script>
+
+
 </html>
 
