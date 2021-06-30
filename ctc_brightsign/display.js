@@ -9,17 +9,32 @@ oReq.send();
 
 classes = null;
 function setupPage(data) {
-	classes = JSON.parse(data);
+
+	json_data = JSON.parse(data);
+	current_datetime = new Date(Date.now());
+	if (current_datetime.getHours() >= 15) {
+		classes = json_data.filter(function(row) {
+			var d = new Date(row.date + ' ' + row.time); 
+			return d.getHours() >= 15 && d.getDate() == current_datetime.getDate();
+		});
+
+	}
+	else {
+		classes = json_data.filter(function(row) {
+			var d = new Date(row.date + ' ' + row.time);
+			return d.getHours() < 15 && d.getDate() == current_datetime.getDate();
+		});
+		console.log("Morning");
+	}
 	drawPage();
 }
 
 function drawPage() {
-	//console.log(classes.filter(function(item) { return item.room === "227" }))
 	var html = '';
 	html += 'Current datetime is ' + new Date().toString();
 	html += '<div id="slide0"><h1>Slide 0</h1>';
 	var width = 50;
-	var classesPerSlide = 5;
+	var classesPerSlide = 4;
 	numSlides = 0;
 
 	for (i = 0; i < classes.length; i++) {
@@ -32,7 +47,7 @@ function drawPage() {
 			html += '</div><div id="slide' + numSlides + '"><h1>Slide ' + numSlides + '</h1>';
 		}
 		var classTime = new Date(classes[i].date + ' ' + classes[i].time);
-		html += String(i).padStart(2, '0') + '. ' + classes[i].name + ' ' + spacer + ' ' + classes[i].room + ', ' + classes[i].date + ' @ ' + classes[i].time +'<br>';
+		html += String(i).padStart(2, '0') + '. ' + classes[i].name + ' ' + spacer + ' ' + classes[i].room + ', ' + classes[i].date + ' @ ' + classes[i].time + '<br>';
 	}
 	html += '</div>';
 	document.getElementById('page_content').innerHTML = html;
