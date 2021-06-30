@@ -1,0 +1,80 @@
+<html>
+  <head>
+    <style type="text/css">
+      body{font-family:monospace;}
+    </style>
+  </head>
+  <!-- leave in click function to override timed slide change. -->
+  <body onclick="incrementSlide()">
+    <div id="page_content">
+    </div>
+  </body>
+    <script type="text/javascript">
+      var text = '{ "classes" : [' +
+	  '{ "name" : "2HR Drug & Alcohol Awareness", "room":"236", "date":"06/28/2021","time":"4:00 PM" },' +
+	  '{ "name" : "8HR Fall Protection", "room":"227", "date":"06/29/2021", "time":"4:30 PM" },' +
+	  '{ "name" : "4HR Scaffold", "room":"248", "date":"06/29/2021", "time":"7:00 AM"},' +
+	  '{ "name" : "OSHA 30", "room":"227", "date":"06/29/2021", "time":"8:00 AM"},' +
+	  '{ "name" : "Welding", "room":"016", "date":"06/30/2021", "time":"6:15 PM"}' +
+	  ']}';
+      var obj = JSON.parse(text);
+      console.log(obj);
+      console.log(obj.classes.filter(function(item){return item.room==="227"}))
+      var html = '<div id="slide0"><h1>Slide 0</h1>';
+      var width = 60;
+      var classesPerSlide = 10;    
+      var numSlides = 0;
+      for (i = 0; i < obj.classes.length; i++) {
+	  var spacer = '';
+	  for (c = 0; c < width-(obj.classes[i].name.length + obj.classes[i].room.length + 2);c++){
+	      spacer += '.';
+	  }
+	  if (i>0 && i % classesPerSlide == 0){
+	      numSlides += 1;
+	      html += '</div><div id="slide' + numSlides +'"><h1>Slide '+numSlides+'</h1>';
+	  }
+	  classTime = new Date(obj.classes[i].date + ' ' + obj.classes[i].time);
+	  html += String(i).padStart(2, '0') +'. ' + obj.classes[i].name + ' ' + spacer + ' ' + obj.classes[i].room + ', ' + obj.classes[i].date + ' @ ' + obj.classes[i].time;
+	  console.log(classTime.getDate());
+	  console.log(new Date(Date.now()).getDate());
+	  console.log('Time: ' + classTime.getTime());
+	  if(classTime.getHours()>15){
+	      html += ' Afternoon ';
+	  }else{
+	      html += ' Morning ';
+	  }
+	  if(classTime.getDate()>new Date(Date.now()).getDate()){
+	      html += ' (UPCOMING) ';
+	  }else if(classTime.getDate()<new Date(Date.now()).getDate()){
+	      html += ' (PREVIOUS)';
+	  }
+	  
+	  html += '<br>';
+      }
+      html += '</div>';
+      document.getElementById('page_content').innerHTML = html;
+
+      var currentSlide = 0;
+      changeSlide();
+      function changeSlide(){
+	  if(currentSlide > numSlides){
+	      currentSlide = 0;
+	  }
+	  for(i = 0; i<=numSlides; i++){
+	      if(i != currentSlide){
+		  document.getElementById('slide'+i).setAttribute('style','display:none;')
+	      }else{
+		  document.getElementById('slide'+i).setAttribute('style','');
+	      }
+	  }
+      }
+
+      function incrementSlide(){
+	  currentSlide += 1;
+	  changeSlide();
+      }
+
+      console.log(new Date());
+      
+      </script>
+</html>
