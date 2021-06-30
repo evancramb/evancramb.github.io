@@ -4,7 +4,7 @@ function reqListener() {
 
 var oReq = new XMLHttpRequest();
 oReq.addEventListener("load", reqListener);
-oReq.open("GET", "../data.json");
+oReq.open("GET", "data.json");
 oReq.send();
 
 classes = null;
