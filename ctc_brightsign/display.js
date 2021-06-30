@@ -4,25 +4,26 @@ function reqListener() {
 
 var oReq = new XMLHttpRequest();
 oReq.addEventListener("load", reqListener);
-oReq.open("GET", "data.csv");
+oReq.open("GET", "data.json");
 oReq.send();
 
 classes = null;
 function setupPage(data) {
-    var testPapa = Papa.parse(data,{header: true});
-    console.log(testPapa);
-    var json_data = testPapa //JSON.parse(data);
-    console.log(json_data);
+    //var testPapa = Papa.parse(data,{header: true});
+    //console.log(testPapa);
+    //var json_data = testPapa //JSON.parse(data);
+    //console.log(json_data);
+    json_data = JSON.parse(data);
     current_datetime = new Date(Date.now());
     if (current_datetime.getHours() >= 15) {
-	classes = testPapa.data.filter(function(row) {
+	classes = json_data.filter(function(row) {
 	    var d = new Date(row.date + ' ' + row.time); 
 	    return d.getHours() >= 15 && d.getDate() == current_datetime.getDate();
 	});
 
     }
     else {
-	classes = testPapa.data.filter(function(row) {
+	classes = json_data.filter(function(row) {
 	    var d = new Date(row.date + ' ' + row.time);
 	    return d.getHours() < 15 && d.getDate() == current_datetime.getDate();
 	});
