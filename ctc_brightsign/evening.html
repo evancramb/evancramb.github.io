@@ -1,23 +1,42 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script type="text/javascript" src="papaparse.min.js"></script>
+    <title>CTC Classrooms</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap" rel="stylesheet">  
-    <link rel="stylesheet" type="text/css" href="style.css" />
-    <!-- Reload page every five minutes; TV display has no refresh button -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="legacy_style.css">
     <script type="text/javascript">
       setInterval(function() {
                   window.location.reload();
       }, 300000);
     </script>
   </head>
-  <!-- leave in click function to override timed slide change. -->
-  <body onclick="changeSlide()">
-    <div id="container">
-      <h1 id="page_title"><img src="logo.gif"><span id="date">Classrooms</span><img src="logo.gif"></h1>
-      <div id="page_content">Loading</div>
-    </div><!-- end container -->
-  </body>
-  <script type="text/javascript" src="display.js"></script>
+<body>
+
+<div id="container">
+<h1><img src="logo.gif"><span id="date">Evening Classes</span><img src="logo.gif"></h1>
+<table id="slide0" style=""><tbody><tr><td class="ar"><span class="num">2</span>HR Drug &amp; Alcohol Awareness</td><td class="room"> Room 221</td></tr><tr><td class="ar"><span class="num">4</span>HR SST Bundle</td><td class="room"> Room 227</td></tr><tr><td class="ar"><span class="num">4</span>HR Scaffold</td><td class="room"> Room 248</td></tr><tr><td class="ar">Floor Covering</td><td class="room"> Room 233</td></tr><tr><td class="ar">OSHA <span class="num">30</span></td><td class="room"> Room 222</td></tr><tr><td class="ar"><span class="num">32</span>HR Scaffold</td><td class="room"> Room 252</td></tr><tr><td class="ar">Sexual Harassment Prevention</td><td class="room"> Room 236</td></tr><tr><td class="ar">Welding</td><td class="room"> Basement 016</td></tr></tbody></table>
+</div><!-- end container -->
+
+</body>
+    <script type="text/javascript">
+
+var elements = document.getElementsByTagName('TD');
+var i = 0;
+while (i<elements.length){
+elements[i].innerHTML = elements[i].textContent.replace(/(\$?\d+)/g, '<span>$1</span>');
+i+=1;
+}
+
+
+    </script>
+<script type="text/javascript"><!--
+var now = new Date();
+var Weekday = new Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday");
+var Month = new Array("January","February","March","April","May","June","July","August","September","October","November","December");
+document.getElementById('date').innerHTML = Weekday[now.getDay()]+',&nbsp'+Month[now.getMonth()]+'&nbsp'+now.getDate()+',&nbsp'+now.getFullYear();
+//--></script>
+
+
 </html>
+
