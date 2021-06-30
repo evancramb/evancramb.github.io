@@ -1,75 +1,104 @@
 function reqListener() {
-	setupPage(this.responseText);
+    setupPage(this.responseText);
 }
 
 var oReq = new XMLHttpRequest();
 oReq.addEventListener("load", reqListener);
-oReq.open("GET", "data.json");
+oReq.open("GET", "data.csv");
 oReq.send();
 
 classes = null;
 function setupPage(data) {
+    var testPapa = Papa.parse(data,{header: true});
+    console.log(testPapa);
+    var json_data = testPapa //JSON.parse(data);
+    console.log(json_data);
+    current_datetime = new Date(Date.now());
+    if (current_datetime.getHours() <= 15) {
+	classes = testPapa.data.filter(function(row) {
+	    var d = new Date(row.date + ' ' + row.time); 
+	    return d.getHours() >= 15 && d.getDate() == current_datetime.getDate();
+	});
 
-	json_data = JSON.parse(data);
-	current_datetime = new Date(Date.now());
-	if (current_datetime.getHours() >= 15) {
-		classes = json_data.filter(function(row) {
-			var d = new Date(row.date + ' ' + row.time); 
-			return d.getHours() >= 15 && d.getDate() == current_datetime.getDate();
-		});
-
-	}
-	else {
-		classes = json_data.filter(function(row) {
-			var d = new Date(row.date + ' ' + row.time);
-			return d.getHours() < 15 && d.getDate() == current_datetime.getDate();
-		});
-		console.log("Morning");
-	}
-	drawPage();
+    }
+    else {
+	classes = json_data.filter(function(row) {
+	    var d = new Date(row.date + ' ' + row.time);
+	    return d.getHours() < 15 && d.getDate() == current_datetime.getDate();
+	});
+    }
+    drawPage();
+    colorNumbers();
+    setHeader();
+    var seconds = 0;
+    setInterval(function() {
+	seconds = seconds + 1;
+	console.log(seconds + " seconds have elapsed");
+	changeSlide();
+    }, 10000);
 }
 
 function drawPage() {
-	var html = '';
-	html += 'Current datetime is ' + new Date().toString();
-	html += '<div id="slide0"><h1>Slide 0</h1>';
-	var width = 50;
-	var classesPerSlide = 4;
-	numSlides = 0;
+    var html = '<table id="slide0">';
+    var width = 50;
+    var classesPerSlide = 8;
+    numSlides = 0;
 
-	for (i = 0; i < classes.length; i++) {
-		var spacer = '';
-		for (c = 0; c < width - (classes[i].name.length + classes[i].room.toString().length + 2); c++) {
-			spacer += '.';
-		}
-		if (i > 0 && i % classesPerSlide == 0) {
-			numSlides += 1;
-			html += '</div><div id="slide' + numSlides + '"><h1>Slide ' + numSlides + '</h1>';
-		}
-		var classTime = new Date(classes[i].date + ' ' + classes[i].time);
-		html += String(i).padStart(2, '0') + '. ' + classes[i].name + ' ' + spacer + ' ' + classes[i].room + ', ' + classes[i].date + ' @ ' + classes[i].time + '<br>';
+    for (i = 0; i < classes.length; i++) {
+	if (i > 0 && i % classesPerSlide == 0) {
+	    numSlides += 1;
+	    html += '</table><table id="slide' + numSlides + '">';
 	}
-	html += '</div>';
-	document.getElementById('page_content').innerHTML = html;
+	var classTime = new Date(classes[i].date + ' ' + classes[i].time);
+	var building_level = '';
+	if(Number(classes[i].room) < 200){
+	    building_level = 'Basement';
+	}
+	else{
+	    building_level = 'Room';
+	}
+	//for additional columns html += '<tr><td>' + String(i+1) + '.</td><td class="ar">' + classes[i].name + '</td><td class="room"> ' + building_level + ' ' + classes[i].room + '</td><td> ' + classes[i].date + '</td><td>' + classes[i].time + '</td></tr>'; + numSlides + '">';
+	html += '<tr><td class="ar">' + classes[i].name + '</td><td class="room"> ' + building_level + ' ' + String(classes[i].room).padStart(3, '0') + '</td></tr>';
+	console.log(String(classes[i].room).padStart(3, '0'));
+    }
+    
+    html += '</table>';
+    document.getElementById('page_content').innerHTML = html;
 
-	currentSlide = 0;
-	changeSlide();
+    currentSlide = 0;
 }
 
 function changeSlide() {
-	if (currentSlide > numSlides) {
-		currentSlide = 0;
+    currentSlide += 1;
+    console.log(currentSlide+'/'+numSlides);
+    if (currentSlide > numSlides) {
+	currentSlide = 0;
+    }
+    for (i = 0; i <= numSlides; i++) {
+	if (i != currentSlide) {
+	    document.getElementById('slide' + i).setAttribute('style', 'display:none;')
+	} else {
+	    document.getElementById('slide' + i).setAttribute('style', '');
 	}
-	for (i = 0; i <= numSlides; i++) {
-		if (i != currentSlide) {
-			document.getElementById('slide' + i).setAttribute('style', 'display:none;')
-		} else {
-			document.getElementById('slide' + i).setAttribute('style', '');
-		}
-	}
+    }
 }
 
-function incrementSlide() {
-	currentSlide += 1;
-	changeSlide();
+function colorNumbers(){
+    var elements = document.getElementsByClassName('ar');
+    var i = 0;
+    while (i<elements.length){
+	elements[i].innerHTML = elements[i].textContent.replace(/(\$?\d+)/g, '<span class="num">$1</span>');
+	i+=1;
+    }
+}
+
+function setHeader(){
+    var now = new Date();
+    var Weekday = new Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday");
+    var Month = new Array("January","February","March","April","May","June","July","August","September","October","November","December");
+    var value = Weekday[now.getDay()]+',&nbsp'+Month[now.getMonth()]+'&nbsp'+now.getDate()+',&nbsp'+now.getFullYear();
+    
+    var title_text = 
+	document.getElementById('date').innerHTML = value;
+    
 }
