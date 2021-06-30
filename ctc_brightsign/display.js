@@ -14,7 +14,7 @@ function setupPage(data) {
     var json_data = testPapa //JSON.parse(data);
     console.log(json_data);
     current_datetime = new Date(Date.now());
-    if (current_datetime.getHours() <= 15) {
+    if (current_datetime.getHours() >= 15) {
 	classes = testPapa.data.filter(function(row) {
 	    var d = new Date(row.date + ' ' + row.time); 
 	    return d.getHours() >= 15 && d.getDate() == current_datetime.getDate();
@@ -22,7 +22,7 @@ function setupPage(data) {
 
     }
     else {
-	classes = json_data.filter(function(row) {
+	classes = testPapa.data.filter(function(row) {
 	    var d = new Date(row.date + ' ' + row.time);
 	    return d.getHours() < 15 && d.getDate() == current_datetime.getDate();
 	});
