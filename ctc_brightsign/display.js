@@ -98,7 +98,8 @@ function setHeader(){
     var now = new Date();
     var Weekday = new Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday");
     var Month = new Array("January","February","March","April","May","June","July","August","September","October","November","December");
-    var value = Weekday[now.getDay()]+',&nbsp'+Month[now.getMonth()]+'&nbsp'+now.getDate()+',&nbsp'+'2021';
+    //var value = Weekday[now.getDay()]+',&nbsp'+Month[now.getMonth()]+'&nbsp'+now.getDate()+',&nbsp'+'2021';
+	var value = now.getFullYear();
 	//var value = "Today is 6/30/2021";
 
 	document.getElementById('page_title').innerHTML = value;
