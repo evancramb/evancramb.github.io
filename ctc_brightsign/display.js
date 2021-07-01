@@ -8,15 +8,15 @@ xhttp.onreadystatechange = function() {
        setupPage(xhttp.responseText);
     }
 };
-xhttp.open("GET", "https://evancramb.github.io/ctc_brightsign/data.csv",true);
+xhttp.open("GET", "data.csv",true);
 xhttp.send();
 
 classes = null;
 function setupPage(data) {
     var testPapa = Papa.parse(data,{header: true});
-    //console.log(testPapa);
-    var json_data = testPapa //JSON.parse(data);
-    //console.log(json_data);
+    console.log(testPapa);
+    var json_data = testPapa.data //JSON.parse(data);
+    console.log(json_data);
     //var json_data = JSON.parse(data);
     current_datetime = new Date(Date.now());
 	if (current_datetime.getHours() >= 15) {
@@ -32,6 +32,7 @@ function setupPage(data) {
 			return d.getHours() < 15 && d.getDate() == current_datetime.getDate();
 		});
     }
+	console.log(classes);
     drawPage();
     colorNumbers();
     setHeader();
@@ -45,7 +46,7 @@ function setupPage(data) {
 function drawPage() {
     var html = '<table id="slide0">';
     var width = 50;
-    var classesPerSlide = 2;
+    var classesPerSlide = 8;
     numSlides = 0;
 
     for (i = 0; i < classes.length; i++) {
