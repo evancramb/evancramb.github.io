@@ -1,24 +1,30 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <script type="text/javascript" src="json2.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap" rel="stylesheet">  
-    <link rel="stylesheet" type="text/css" href="style.css" />
-    <!-- Reload page every five minutes; TV display has no refresh button -->
-    <script type="text/javascript">
+<head>
+<script type="text/javascript" src="json2.js"></script>
+<script type="text/javascript" src="jquery.min.js"></script>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link
+	href="https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap"
+	rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="style.css" />
+<!-- Reload page every five minutes; TV display has no refresh button -->
+<script type="text/javascript">
       setInterval(function() {
                   window.location.reload();
       }, 300000);
     </script>
-  </head>
-  <!-- leave in click function to override timed slide change. -->
-  <body onclick="changeSlide()">
-    <div id="container">
-      <h1 id="page_title"><img src="logo.gif"><span id="date">Classrooms</span><img src="logo.gif"></h1>
-      <div id="page_content">Loading</div>
-    </div><!-- end container -->
-  </body>
-  <script type="text/javascript" src="display.js"></script>
+</head>
+<!-- leave in click function to override timed slide change. -->
+<body onclick="changeSlide()">
+	<div id="container">
+		<h1 id="page_title">
+			<img src="logo.gif"><span id="date">Classrooms</span><img
+				src="logo.gif">
+		</h1>
+		<div id="page_content">Loading</div>
+	</div>
+	<!-- end container -->
+</body>
+<script type="text/javascript" src="display.js"></script>
 </html>
