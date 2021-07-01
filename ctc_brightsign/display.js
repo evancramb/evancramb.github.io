@@ -19,18 +19,18 @@ function setupPage(data) {
     //console.log(json_data);
     json_data = JSON.parse(data);
     current_datetime = new Date(Date.now());
-    if (current_datetime.getHours() >= 15) {
-	classes = json_data.filter(function(row) {
-	    var d = new Date(row.date + ' ' + row.time); 
-	    return d.getHours() >= 15 && d.getDate() == current_datetime.getDate();
-	});
+	if (current_datetime.getHours() >= 15) {
+		classes = $.grep(json_data, function(row, i) {
+			var d = new Date(row.date + ' ' + row.time);
+			return d.getHours() >= 15 && d.getDate() == current_datetime.getDate();
+		});
 
     }
     else {
-	classes = json_data.filter(function(row) {
-	    var d = new Date(row.date + ' ' + row.time);
-	    return d.getHours() < 15 && d.getDate() == current_datetime.getDate();
-	});
+		classes = $.grep(json_data, function(row, i) {
+			var d = new Date(row.date + ' ' + row.time);
+			return d.getHours() < 15 && d.getDate() == current_datetime.getDate();
+		});
     }
     drawPage();
     colorNumbers();
