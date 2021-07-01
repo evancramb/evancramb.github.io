@@ -2,10 +2,14 @@ function reqListener() {
     setupPage(this.responseText);
 }
 
-var oReq = new XMLHttpRequest();
-oReq.addEventListener("load", reqListener);
-oReq.open("GET", "data.json");
-oReq.send();
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+       setupPage(xhttp.responseText);
+    }
+};
+xhttp.open("GET", "https://evancramb.github.io/ctc_brightsign/data.json",true);
+xhttp.send();
 
 classes = null;
 function setupPage(data) {
