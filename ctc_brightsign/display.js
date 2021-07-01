@@ -8,16 +8,16 @@ xhttp.onreadystatechange = function() {
        setupPage(xhttp.responseText);
     }
 };
-xhttp.open("GET", "https://evancramb.github.io/ctc_brightsign/data.json",true);
+xhttp.open("GET", "https://evancramb.github.io/ctc_brightsign/data.csv",true);
 xhttp.send();
 
 classes = null;
 function setupPage(data) {
-    //var testPapa = Papa.parse(data,{header: true});
+    var testPapa = Papa.parse(data,{header: true});
     //console.log(testPapa);
-    //var json_data = testPapa //JSON.parse(data);
+    var json_data = testPapa //JSON.parse(data);
     //console.log(json_data);
-    json_data = JSON.parse(data);
+    //var json_data = JSON.parse(data);
     current_datetime = new Date(Date.now());
 	if (current_datetime.getHours() >= 15) {
 		classes = $.grep(json_data, function(row, i) {
