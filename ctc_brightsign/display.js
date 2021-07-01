@@ -98,7 +98,7 @@ function setHeader(){
     var now = new Date();
     var Weekday = new Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday");
     var Month = new Array("January","February","March","April","May","June","July","August","September","October","November","December");
-    var value = Weekday[now.getDay()]+',&nbsp'+Month[now.getMonth()]+'&nbsp'+now.getDate()+',&nbsp'+now.getFullYear();
+    var value = Weekday[now.getDay()]+',&nbsp'+Month[now.getMonth()]+'&nbsp'+now.getDate()+',&nbsp2021';
     
     var title_text = 
 	document.getElementById('date').innerHTML = value;
