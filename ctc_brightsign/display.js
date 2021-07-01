@@ -19,7 +19,7 @@ function setupPage(data) {
     //console.log(json_data);
     //var json_data = JSON.parse(data);
 	var json_data = csvJSON(data);
-	//console.log(json_data);
+	console.log(json_data);
     current_datetime = new Date(Date.now());
 	if (current_datetime.getHours() >= 15) {
 		classes = $.grep(json_data, function(row, i) {
