@@ -22,17 +22,17 @@ function setupPage(data) {
 	var json_data = csvJSON(data);
 	//console.log(json_data);
     current_datetime = new Date(Date.now());
-	if (current_datetime.getHours() >= 14) {
+	if (current_datetime.getHours() >= 15) {
 		classes = $.grep(json_data, function(row, i) {
 			var d = new Date(row.date + ' ' + row.time);
-			return d.getHours() >= 14 && d.getDate() == current_datetime.getDate();
+			return d.getHours() >= 15 && d.getDate() == current_datetime.getDate();
 		});
 
     }
     else {
 		classes = $.grep(json_data, function(row, i) {
 			var d = new Date(row.date + ' ' + row.time);
-			return d.getHours() < 14 && d.getDate() == current_datetime.getDate();
+			return d.getHours() < 15 && d.getDate() == current_datetime.getDate();
 		});
     }
     drawPage();
