@@ -18,7 +18,6 @@ function setupPage(data) {
     //var json_data = testPapa //JSON.parse(data);
     //console.log(json_data);
     json_data = JSON.parse(data);
-	console.log(json_data);
     current_datetime = new Date(Date.now());
 	if (current_datetime.getHours() >= 15) {
 		classes = $.grep(json_data, function(row, i) {
