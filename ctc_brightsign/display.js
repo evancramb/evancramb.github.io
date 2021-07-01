@@ -91,7 +91,7 @@ function colorNumbers(){
     var elements = $('.ar');
     var i = 0;
     while (i<elements.length){
-	elements[i].innerHTML = elements[i].textContent.replace(/(\$?\d+)/g, '<span class="num">$1</span>');
+	elements[i].innerHTML = elements[i].innerHTML.replace(/(\$?\d+)/g, '<span class="num">$1</span>');
 	i+=1;
     }
 }
