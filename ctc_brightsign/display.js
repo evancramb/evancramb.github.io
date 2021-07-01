@@ -101,6 +101,6 @@ function setHeader(){
     var value = Weekday[now.getDay()]+',&nbsp'+Month[now.getMonth()]+'&nbsp'+now.getDate()+',&nbsp'+now.getFullYear();
 	//var value = "Today is 6/30/2021";
 
-	document.getElementById('date').innerHTML = value;
+	document.getElementById('page_title').innerHTML = value;
     
 }
