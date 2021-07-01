@@ -13,11 +13,13 @@ xhttp.send();
 
 classes = null;
 function setupPage(data) {
-    var testPapa = Papa.parse(data,{header: true});
-    console.log(testPapa);
-    var json_data = testPapa.data //JSON.parse(data);
-    console.log(json_data);
+    //var testPapa = Papa.parse(data,{header: true});
+    //console.log(testPapa);
+    //var json_data = testPapa.data //JSON.parse(data);
+    //console.log(json_data);
     //var json_data = JSON.parse(data);
+	var json_data = csvJSON(data);
+	//console.log(json_data);
     current_datetime = new Date(Date.now());
 	if (current_datetime.getHours() >= 15) {
 		classes = $.grep(json_data, function(row, i) {
@@ -32,7 +34,6 @@ function setupPage(data) {
 			return d.getHours() < 15 && d.getDate() == current_datetime.getDate();
 		});
     }
-	console.log(classes);
     drawPage();
     colorNumbers();
     setHeader();
@@ -108,4 +109,30 @@ function setHeader(){
 
 	document.getElementById('page_title').innerHTML = value;
     
+}
+
+//var csv is the CSV file with headers
+function csvJSON(csv){
+
+  var lines=csv.split("\r");
+
+  var result = [];
+
+  var headers=lines[0].split(",");
+
+  for(var i=1;i<lines.length;i++){
+
+	  var obj = {};
+	  var currentline=lines[i].split(",");
+
+	  for(var j=0;j<headers.length;j++){
+		  obj[headers[j]] = currentline[j];
+	  }
+
+	  result.push(obj);
+
+  }
+  
+  return result; //JavaScript object
+  //return JSON.stringify(result); //JSON
 }
