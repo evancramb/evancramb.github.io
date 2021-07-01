@@ -79,7 +79,7 @@ function changeSlide() {
     }
     for (i = 0; i <= numSlides; i++) {
 	if (i != currentSlide) {
-	    document.getElementById('slide' + i).setAttribute('style', 'display:none;')
+	    document.getElementById('slide' + i).setAttribute('style', 'display:none;');
 	} else {
 	    document.getElementById('slide' + i).setAttribute('style', '');
 	}
