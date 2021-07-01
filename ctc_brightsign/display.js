@@ -8,11 +8,12 @@ xhttp.onreadystatechange = function() {
        setupPage(xhttp.responseText);
     }
 };
-xhttp.open("GET", "data.csv",true);
+xhttp.open("GET", "https://evancramb.github.io/ctc_brightsign/data.csv",true);
 xhttp.send();
 
 classes = null;
 function setupPage(data) {
+	console.log(data);
     //var testPapa = Papa.parse(data,{header: true});
     //console.log(testPapa);
     //var json_data = testPapa.data //JSON.parse(data);
