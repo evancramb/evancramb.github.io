@@ -18,6 +18,7 @@ function setupPage(data) {
     //var json_data = testPapa //JSON.parse(data);
     //console.log(json_data);
     json_data = JSON.parse(data);
+	console.log(json_data);
     current_datetime = new Date(Date.now());
 	if (current_datetime.getHours() >= 15) {
 		classes = $.grep(json_data, function(row, i) {
@@ -63,8 +64,7 @@ function drawPage() {
 	    building_level = 'Room';
 	}
 	//for additional columns html += '<tr><td>' + String(i+1) + '.</td><td class="ar">' + classes[i].name + '</td><td class="room"> ' + building_level + ' ' + classes[i].room + '</td><td> ' + classes[i].date + '</td><td>' + classes[i].time + '</td></tr>'; + numSlides + '">';
-	html += '<tr><td class="ar">' + classes[i].name + '</td><td class="room"> ' + building_level + ' ' + String(classes[i].room).padStart(3, '0') + '</td></tr>';
-	console.log(String(classes[i].room).padStart(3, '0'));
+	html += '<tr><td class="ar">' + classes[i].name + '</td><td class="room"> ' + building_level + ' ' + classes[i].room + '</td></tr>';
     }
     
     html += '</table>';
