@@ -38,7 +38,6 @@ function setupPage(data) {
     var seconds = 0;
     setInterval(function() {
 	seconds = seconds + 1;
-	console.log(seconds + " seconds have elapsed");
 	changeSlide();
     }, 10000);
 }
@@ -74,7 +73,6 @@ function drawPage() {
 
 function changeSlide() {
     currentSlide += 1;
-    console.log(currentSlide+'/'+numSlides);
     if (currentSlide > numSlides) {
 	currentSlide = 0;
     }
