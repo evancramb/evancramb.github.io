@@ -45,7 +45,7 @@ function setupPage(data) {
 function drawPage() {
     var html = '<table id="slide0">';
     var width = 50;
-    var classesPerSlide = 8;
+    var classesPerSlide = 2;
     numSlides = 0;
 
     for (i = 0; i < classes.length; i++) {
