@@ -100,5 +100,53 @@
 		"room": 16,
 		"date": "7/1/2021",
 		"time": "6:30 AM"
+	},
+	{
+		"name": "CPR/AED",
+		"room": 221,
+		"date": "7/1/2021",
+		"time": "6:30 AM"
+	},
+	{
+		"name": "Welding",
+		"room": 16,
+		"date": "7/1/2021",
+		"time": "6:30 AM"
+	},
+	{
+		"name": "Bowling",
+		"room": 221,
+		"date": "7/1/2021",
+		"time": "6:30 AM"
+	},
+	{
+		"name": "Fishing",
+		"room": 16,
+		"date": "7/1/2021",
+		"time": "6:30 AM"
+	},
+	{
+		"name": "CPR/AED",
+		"room": 221,
+		"date": "7/1/2021",
+		"time": "6:30 AM"
+	},
+	{
+		"name": "Welding",
+		"room": 16,
+		"date": "7/1/2021",
+		"time": "6:30 AM"
+	},
+	{
+		"name": "Bowling",
+		"room": 221,
+		"date": "7/1/2021",
+		"time": "6:30 AM"
+	},
+	{
+		"name": "Fishing",
+		"room": 16,
+		"date": "7/1/2021",
+		"time": "6:30 AM"
 	}
 ]
