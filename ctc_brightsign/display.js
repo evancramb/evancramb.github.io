@@ -13,14 +13,14 @@ xhttp.send();
 
 classes = null;
 function setupPage(data) {
-	console.log(data);
+	//console.log(data);
     //var testPapa = Papa.parse(data,{header: true});
     //console.log(testPapa);
     //var json_data = testPapa.data //JSON.parse(data);
     //console.log(json_data);
     //var json_data = JSON.parse(data);
 	var json_data = csvJSON(data);
-	console.log(json_data);
+	//console.log(json_data);
     current_datetime = new Date(Date.now());
 	if (current_datetime.getHours() >= 15) {
 		classes = $.grep(json_data, function(row, i) {
