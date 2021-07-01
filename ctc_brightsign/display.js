@@ -79,9 +79,11 @@ function changeSlide() {
     }
     for (i = 0; i <= numSlides; i++) {
 	if (i != currentSlide) {
-	    document.getElementById('slide' + i).setAttribute('style', 'display:none;');
+	    //document.getElementById('slide' + i).setAttribute('style', 'display:none;');
+		$("#slide"+i).css('display','none');
 	} else {
-	    document.getElementById('slide' + i).setAttribute('style', '');
+	    //document.getElementById('slide' + i).setAttribute('style', '');
+		$("#slide"+i).css('display','');
 	}
     }
 }
