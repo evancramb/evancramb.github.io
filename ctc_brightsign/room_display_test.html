@@ -16,12 +16,12 @@
     </script>
 </head>
 <!-- leave in click function to override timed slide change. -->
-<body onclick="changeSlide()">
+<body>
 	<div id="container">
 		<h1>
-			<img src="logo.gif"/><span id="page_title">Test</span><img src="logo.gif"/>
+			<img src="logo.gif" onclick="incrementCurrentTime()" /><span id="page_title">Test</span><img src="logo.gif"/>
 		</h1>
-		<div id="page_content">Loading</div>
+		<div id="page_content" onclick="changeSlide()">Loading</div>
 	</div>
 	<!-- end container -->
 	<script type="text/javascript" src="display.js"></script>

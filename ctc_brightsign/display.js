@@ -12,16 +12,13 @@ xhttp.open("GET", "https://evancramb.github.io/ctc_brightsign/data.csv",true);
 xhttp.send();
 
 classes = null;
+current_datetime = new Date(Date.now());
+
 function setupPage(data) {
-	//console.log(data);
     //var testPapa = Papa.parse(data,{header: true});
-    //console.log(testPapa);
     //var json_data = testPapa.data //JSON.parse(data);
-    //console.log(json_data);
     //var json_data = JSON.parse(data);
 	var json_data = csvJSON(data);
-	//console.log(json_data);
-    current_datetime = new Date(Date.now());
 	if (current_datetime.getHours() >= 15) {
 		classes = $.grep(json_data, function(row, i) {
 			var d = new Date(row.date + ' ' + row.time);
@@ -101,7 +98,7 @@ function colorNumbers(){
 }
 
 function setHeader(){
-    var now = new Date();
+    var now = current_datetime;
     var Weekday = new Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday");
     var Month = new Array("January","February","March","April","May","June","July","August","September","October","November","December");
     //var value = Weekday[now.getDay()]+',&nbsp'+Month[now.getMonth()]+'&nbsp'+now.getDate()+',&nbsp'+'2021';
@@ -136,4 +133,15 @@ function csvJSON(csv){
   
   return result; //JavaScript object
   //return JSON.stringify(result); //JSON
+}
+
+Date.prototype.addHours = function(h) {
+  this.setTime(this.getTime() + (h*60*60*1000));
+  return this;
+}
+
+function incrementCurrentTime(){
+current_datetime.addHours();
+setupPage(xhttp.responseText);
+setHeader();
 }
