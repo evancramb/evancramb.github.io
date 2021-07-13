@@ -135,13 +135,10 @@ function csvJSON(csv){
   //return JSON.stringify(result); //JSON
 }
 
-Date.prototype.addHours = function(h) {
-  this.setTime(this.getTime() + (h*60*60*1000));
-  return this;
-}
-
 function incrementCurrentTime(){
-current_datetime.addHours();
+console.log(current_datetime);
+var h = 5;
+current_datetime.setTime(current_datetime.getTime() + (h*60*60*1000));
 setupPage(xhttp.responseText);
 setHeader();
 }
