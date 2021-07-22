@@ -62,7 +62,8 @@ function drawPage() {
 	    building_level = 'Room';
 	}
 	//for additional columns html += '<tr><td>' + String(i+1) + '.</td><td class="ar">' + classes[i].name + '</td><td class="room"> ' + building_level + ' ' + classes[i].room + '</td><td> ' + classes[i].date + '</td><td>' + classes[i].time + '</td></tr>'; + numSlides + '">';
-	html += '<tr><td class="ar">' + classes[i].name + '</td><td class="room"> ' + building_level + ' ' + classes[i].room + '</td></tr>';
+	html += '<tr><td class="ar">' + classes[i].name + '</td><td class="room"> ' + building_level + ' ' + padNumber(classes[i].room,3) + '</td></tr>';
+	
     }
     
     html += '</table>';
@@ -70,6 +71,18 @@ function drawPage() {
 
     currentSlide = -1;
 	changeSlide();
+}
+
+function padNumber(aNumber, digits){
+    var aNumberInt = Number(aNumber);
+    var aNumberString = (aNumberInt).toString();
+    var newString = '';
+    newString += aNumberString;
+    for(c = 0; c < digits-aNumberString.length; c++){
+	newString = '0' + newString;
+    }
+    return newString;
+    
 }
 
 function changeSlide() {
