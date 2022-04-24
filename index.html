@@ -1,16 +1,265 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <title>Evan's Website</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <meta name="description" content="Webpage description goes here" />
+    <meta charset="utf-8" />
+    <title>Evan Cramb - Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Evan Cramb" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vibur&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+      html {
+        position: relative;
+        min-height: 100%;
+        height: 100%;
+        background: linear-gradient(
+          180deg,       
+        #969696 0%,
+        #2b2b2b 100%
+        );
+      }
+      body {
+        margin: 0 0 100px;
+        width: 100%;
+        padding: 0px;
+        height: calc(100% - 104px);
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+      }
+      .container {
+        width: 100%;
+        height: 100%;
+      }
+      .footer {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 100px;
+        width: 100%;
+        text-align: right;
+        color:white;
+        /*font-family: 'Pacifico', cursive;*/
+      }
+
+      .footer span{
+        font-family: 'Vibur', cursive;
+        font-size:3em;
+        font-weight:medium;
+        margin:20px;
+      }
+
+
+      .content {
+        height: calc(100% - 20px);
+      }
+      .container,
+      .content,
+      .header,
+      .footer {
+        /*border: 1px solid black;*/
+      }
+
+      .hamburgerNavMenu {
+        position: relative;
+        top: 0px;
+        left: 25px;
+        width: 100px;
+        height: 100px;
+        /*border: 1px solid black;*/
+      }
+
+      .hamburgerNavMenu ul, li{
+        list-style-type:none;
+        margin:0px;
+        padding:0px;
+        color:white;
+      }
+
+      .hamburgerNavMenu ul li a{
+        color:white;
+        text-decoration:none;
+      }
+
+      .hamburgerNavMenu img{
+        cursor:pointer;
+      }
+
+      .hamburgerNavMenu ul li a:hover{
+        text-decoration:underline;
+      }
+
+      .tag {
+        display: block;
+        text-transform: uppercase;
+        background-color: black;
+        color: white;
+        text-decoration: none;
+        padding: 5px;
+        font-weight: bold;
+      }
+
+      .tag:hover {
+        color: black;
+        background: white;
+        transition: linear;
+        animation-duration: 3ms;
+      }
+
+      .header{
+        text-align:center;
+        color:white;
+      }
+    </style>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
   </head>
-  <body>
-    <!-- page content -->
-    <h1>Evan's Website</h1>
-    <h2>Site under construction. Please check back later.</h2>
-    <img src="https://images2.minutemediacdn.com/image/upload/c_fit,f_auto,fl_lossy,q_auto,w_728/v1555999902/shape/mentalfloss/construction_8.gif">
-    <!-- page content end -->
-  </body>
+
+  <body onload="toggleMenu();renderTags();renderQuote();window.setInterval(animate,80);">
+    <div class="container">
+      <div class="header"><p id="quoteBox"></p>Click a tag to learn more.</div>
+      <!-- end header div-->
+      <div class="content">
+        <div class="hamburgerNavMenu">
+          <img id="hamburgerIcon" src="menu.svg" alt="Menu"/>
+          <img id="shuffleIcon" src="shuffle.svg" alt="Shuffle Tags"/>
+          <ul id="navMenuList">
+            <li>Menu</li>
+            <li><hr></li>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Bio</a></li>
+            <li><a href="#">Resume</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Social Media</a></li>
+          </ul>
+        </div><!-- end hamburgerNavMenu div-->
+      </div>
+      <!-- end content div-->
+      <div class="footer"><span id="logo">Evan Cramb</span></div>
+      <!-- end footer div-->
+    </div>
+    </body>
+
+    <script>
+      quotes = [
+        [
+          `Do I contradict myself?  
+Very well then I contradict myself,  
+(I am large, I contain multitudes.)`,
+          `Walt Whitman`,
+        ],
+        [
+          `A foolish consistency is the hobgoblin of
+little minds... To be great is to be misunderstood.`,
+          `Ralph Waldo Emerson`,
+        ],
+        [`I know that I know nothing.`, `Socrates`],
+        [`The unexamined life is not worth living`, `Socrates`],
+        ['Ever tried. Ever failed. No matter. Try Again. Fail again. Fail better.','Samuel Beckett'],
+        ["It's impossible to learn to plow by Reading Books",'Old Russian Proverb, via Richard Linklater']
+      ];
+
+      let running = true;
+      function animate(){
+        if(running){
+            Array.from(document.getElementsByClassName('tag')).forEach(function(tag){
+              let rand1 = Math.round((Math.random()*10))-5;
+              //console.log(rand1)
+              let rand2 = Math.round((Math.random()*10))-5;
+              //console.log(rand2)
+              tag.style.left = parseInt(tag.style.left)+rand1+"px";
+              tag.style.top = parseInt(tag.style.top)+rand2+"px";
+            });
+
+          }
+        }
+
+
+      tags = [
+        "🌎Web Design",
+        "🍳Cooking",
+        "📺Video Production",
+        "📝Writing",
+        "🤣Memes",
+        "✊Activism",
+        "🤷‍♂️Philosophy",
+        "🎨Art",
+        "💻Programming",
+        "📊Data Science",
+        "🤖Automation",
+        "👫Social Media",
+        "🍕NYC",
+        "🌭New Jersey",
+        "🌵Arizona",
+        "🎾Tennis",
+        "🐏Fordham",
+        "📽Short Films",
+        "🌱Hydroponics",
+        "✏Graphic Design",
+        "📖English Literature",
+        "📜Essays",
+        "📸Photography",
+        "💾Technology",
+        "📚Reading",
+        "🎲Randomness",
+        "🎸Music",
+        "🐍Python",
+        "☕Javascript",
+        "🐘PHP",
+        "🐬SQL Databases"
+      ];
+
+      let menuOpen = true;
+      hamburger = document.getElementById('hamburgerIcon');
+      navMenu = document.getElementById('navMenuList');
+      hamburger.addEventListener('click',toggleMenu)
+      function toggleMenu(){
+        if(menuOpen){
+          //console.log('Closing menu.')
+          navMenu.style.display = 'none';
+          menuOpen = false;
+        }else{
+          //console.log('Opening menu.')
+          navMenu.style.display = 'block';
+          menuOpen = true;
+        }
+      }
+
+      function renderQuote(){
+        randQuoteNum = parseInt(Math.random()*quotes.length);
+        
+      }
+
+      shuffle = document.getElementById('shuffleIcon');
+      shuffle.addEventListener('click',renderTags);
+
+      function renderTags(){
+        let contentDiv = document.getElementsByClassName("content")[0];
+        Array.from(document.getElementsByClassName('tag')).forEach(function(tag){
+          tag.remove();
+        })
+        wid = parseInt(window.getComputedStyle(contentDiv).width);
+        hgt = parseInt(window.getComputedStyle(contentDiv).height);
+
+        tags.forEach(function (tag) {
+          tagElem = document.createElement("a");
+          tagElem.innerHTML = tag;
+          tagElem.style.position = "absolute";
+          console.log("Total area is : " + wid + "x" + hgt);
+
+          randX = Math.trunc((wid - 200) * Math.random());
+          randY = Math.trunc((hgt - 200) * Math.random()) + 100;
+          console.log(
+            "Putting tag (" + tag + ") at position: " + randX + "x" + randY
+          );
+          tagElem.style.left = randX + "px";
+          tagElem.style.top = randY + "px";
+          tagElem.href = "#";
+          tagElem.setAttribute("class", "tag");
+          contentDiv.prepend(tagElem);
+        });
+    }
+    </script>
 </html>
